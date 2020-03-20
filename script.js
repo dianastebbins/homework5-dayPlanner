@@ -44,6 +44,8 @@ function refreshColors() {
             $(this).addClass("future");
         }
     });
+    localStorage.removeItem("calendarTasks"); // for testing purposes, when I need to start over...
+    
 }
 
 // get and set the date and time as well as manage the look of the page based on time
