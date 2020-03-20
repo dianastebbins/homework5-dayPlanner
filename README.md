@@ -4,8 +4,9 @@
 A simple calendar application that allows the user to save events for each hour of the day.
 
 ## General Notes
-### Navbar
+### Current Date and Time display
 ```
+The current time is displayed down to seconds...more for testing/proof it is updating with a timer. For a "real" app, I would drop the seconds and slow the timer down to minute intervals instead of seconds.
 ```
 ### Alerts
 ```

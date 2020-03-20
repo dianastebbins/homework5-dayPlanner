@@ -18,7 +18,7 @@ textarea{
 .jumbotron {
   text-align: center;
   background-color: transparent;
-  color: black;
+  color: purple;
   border-radius: 0;
   border-bottom: 10px solid black;
 }
@@ -41,24 +41,32 @@ textarea{
 
 /* dynamically allocate these in script.js based on current time */
 .past {
-  background-color: #d3d3d3;
+  background-color: lightgray;
   color: white;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: purple;
   color: white;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: plum;
   color: white;
 }
 
 /* used on "button" column */
 .saveBtn {
-  border-left: 1px solid black;
+  border-left: 1px solid purple;
+  border-right: 1px solid purple;
   border-radius: 15px;
-  background-color: #06AED5;
+  background-color:  white; // #06AED5;
+  color: purple;
+}
+
+#currentDay {
   color: white;
+  background: purple;
+  border-radius: 15px;
+  padding: 5px;
 }
