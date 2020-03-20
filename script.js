@@ -4,13 +4,22 @@ var currentHour = parseInt(timeNow.hour());
 var calendarTasks = JSON.parse(localStorage.getItem("calendarTasks")) || [];
 
 function refreshPage(){
+    // localStorage.removeItem("calendarTasks"); // for testing purposes, when I need to start over...
     refreshDailyTasks();
     refreshColors();
 }
 
 // display any persisted tasks stored
 function refreshDailyTasks(){
-    console.log("calendarTasks: " + calendarTasks);
+    for (let i = 0; i < calendarTasks.length; i++) {
+        calendarEntry = calendarTasks[i];
+        var entryId = "#" + calendarEntry.id;
+        var entryTasks = calendarEntry.tasks;
+
+        // put the tasks into the textarea with matching id
+        console.log(entryId + " - " + entryTasks);
+        $(entryId).text(entryTasks);
+    }
 }
 
 // update the colors on the page as related to the time of day

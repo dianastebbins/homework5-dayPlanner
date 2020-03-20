@@ -14,11 +14,13 @@ If enough time tonight (Thursday) I would like to try and make the "buttons" app
 ```
 The current time is displayed down to seconds...more for testing/proof that it is updating with a timer. For a "real" app, I would drop the seconds and slow the timer down to minute intervals instead of seconds.
 ```
-### High Scores
+### Save Button
 ```
+It is possible for the user to Save an empty entry...that would be clearing out the day. Given more time, I would implement a second button Clear. Save would only do anything if there were data in the textarea element, Clear would empty that element and persist an empty entry to local storage.
 ```
 ### Problems
 ```
+One last problem to fix. When I edit an existing entry, say at 10:00 am, then the new entry AND the old entry are saved in the database. Because I am pushing them into the array, the latest will always be displayed, but it is not technically accurate. Unless you want a history I guess. Can I call this a feature and not a bug? Hahahaha.
 ```
 
 ## Table of Contents
@@ -61,9 +63,9 @@ GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
 THEN the current day is displayed at the top of the calendar
 WHEN I scroll down
--THEN I am presented with timeblocks for standard business hours
--WHEN I view the timeblocks for that day
--THEN each timeblock is color coded to indicate whether it is in the past, present, or future
+THEN I am presented with timeblocks for standard business hours
+WHEN I view the timeblocks for that day
+THEN each timeblock is color coded to indicate whether it is in the past, present, or future
 -WHEN I click into a timeblock
 -THEN I can enter an event
 -WHEN I click the save button for that timeblock
@@ -82,18 +84,18 @@ WHEN I scroll down
 -    retrieve task objects from local storage
 -    display them on appropriate time block
 -When user clicks save button
--    determine which time block needs saving
--    get the text
+    determine which time block needs saving
+    get the text
 -    save the text to local saved object and to memory
 -    refresh the page
 Continually retrieve current date/time element
     update current date display
--    evaluate what hour it currently is and alter time block backgrounds appropriately (past/present/future)
--    refresh page
+    evaluate what hour it currently is and alter time block backgrounds appropriately (past/present/future)
+    refresh page
 ```
 
 ## Installation
-url to deployed app: 
+url to deployed app:  https://dianastebbins.github.io/homework5-dayPlanner/
 
 ## Usage
 
