@@ -44,7 +44,8 @@ function refreshColors() {
             $(this).addClass("future");
         }
     });
-    localStorage.removeItem("calendarTasks"); // for testing purposes, when I need to start over...
+    var emptyArray = [];
+    localStorage.setItem("calendarTasks",emptyArray); // for testing purposes, when I need to start over...
     
 }
 
