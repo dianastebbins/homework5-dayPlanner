@@ -9,7 +9,7 @@ body {
 textarea{
   resize: none;
   color: #000000;
-  border-left: 1px solid black;
+  /* border-left: 1px solid black; */
   padding: 10px;
   margin-top: 3px;
 }
@@ -42,11 +42,12 @@ textarea{
 /* dynamically allocate these in script.js based on current time */
 .past {
   background-color: lightgray;
-  color: white;
+  color: grey;
 }
 
 .present {
   background-color: purple;
+  font-weight: bold;
   color: white;
 }
 
@@ -60,8 +61,15 @@ textarea{
   border-left: 1px solid purple;
   border-right: 1px solid purple;
   border-radius: 15px;
-  background-color:  white; // #06AED5;
+  background-color:  white;
   color: purple;
+}
+
+/* nice. I like :hover */
+/* using here to make non-buttons kind of look like a button when mouse is detected */
+.saveBtn:hover {
+  font-size: 30px;
+  transition: all .3s ease-in-out;
 }
 
 #currentDay {
