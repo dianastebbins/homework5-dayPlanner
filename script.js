@@ -4,7 +4,7 @@ var currentHour = parseInt(timeNow.hour());
 var calendarTasks = JSON.parse(localStorage.getItem("calendarTasks")) || [];
 
 function refreshPage(){
-    // localStorage.removeItem("calendarTasks"); // for testing purposes, when I need to start over...
+    localStorage.removeItem("calendarTasks"); // for testing purposes, when I need to start over...
     refreshDailyTasks();
     refreshColors();
 }
