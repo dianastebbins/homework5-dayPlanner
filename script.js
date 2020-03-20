@@ -1,10 +1,10 @@
 // hour comes back as 24-hour clock, which is perfect
 var timeNow = moment();
 var currentHour = parseInt(timeNow.hour());
-var calendarTasks = JSON.parse(localStorage.getItem("calendarTasks")) || [];
+var calendarTasks = []; //JSON.parse(localStorage.getItem("calendarTaskList")) || [];
 
 function refreshPage(){
-    localStorage.removeItem("calendarTasks"); // for testing purposes, when I need to start over...
+    // localStorage.removeItem("calendarTasks"); // for testing purposes, when I need to start over...
     refreshDailyTasks();
     refreshColors();
 }
@@ -17,7 +17,7 @@ function refreshDailyTasks(){
         var entryTasks = calendarEntry.tasks;
 
         // put the tasks into the textarea with matching id
-        console.log(entryId + " - " + entryTasks);
+        // console.log(entryId + " - " + entryTasks);
         $(entryId).text(entryTasks);
     }
 }
@@ -44,9 +44,6 @@ function refreshColors() {
             $(this).addClass("future");
         }
     });
-    var emptyArray = [];
-    localStorage.setItem("calendarTasks",emptyArray); // for testing purposes, when I need to start over...
-    
 }
 
 // get and set the date and time as well as manage the look of the page based on time
@@ -70,30 +67,39 @@ function setTime() {
 
 // when user clicks a Save button...
 $(".saveBtn").on("click", function(){
-    // get the id of this button
-    // and use it to find the ID of its corresponding textarea element
+    // get the id of this button and use it to find the ID of its corresponding textarea element
     var idOfBtn = $(this).attr("id");
     var idOfTextEl = (idOfBtn.split("-"))[1];
-
-    // now get the value in the textarea element
+    
+    // now get the value in the textarea element and turn it into an object to persist
     var textareaEl = $( "#" + idOfTextEl);
     var taskText = textareaEl.val();
-
-    // put it all together in an object
-    // and add it to the array of tasks
     var taskObj = {
         id: idOfTextEl,
         tasks: taskText
     }
-    // // calendarTasks.push(taskObj);
-    // taskArr = [taskObj];
-    // taskArr.push(taskObj);
-    calendarTasks.push(taskObj);
-    calendarTasks
-    // ...and save it...
-    localStorage.setItem("calendarTasks",JSON.stringify(calendarTasks));
-    // console.log(calendarTasks);
-    // console.log(storedTasks);
+    
+    // find any old entries in the main array for this hour/id
+    var elementToReplace = -1;
+    for (let i = 0; i < calendarTasks.length; i++) {
+        calendarEntry = calendarTasks[i];
+        var existingId = calendarEntry.id;
+
+        if(existingId === idOfTextEl){
+            elementToReplace = i;
+        }
+    }
+    
+    if(elementToReplace > -1){
+        // replace an existing item with this new item
+        calendarTasks.splice(elementToReplace, 1, taskObj);
+    } else {
+        // first entry for this time slot, just add it to array
+        calendarTasks.push(taskObj);
+    }
+        
+    // ...and persist the whole thing to local storage
+    localStorage.setItem("calendarTaskList",JSON.stringify(calendarTasks));
 });
 
 setTime();
