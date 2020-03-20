@@ -1,7 +1,7 @@
 // hour comes back as 24-hour clock, which is perfect
 var timeNow = moment();
 var currentHour = parseInt(timeNow.hour());
-var calendarTasks = []; //JSON.parse(localStorage.getItem("calendarTaskList")) || [];
+var calendarTasks = JSON.parse(localStorage.getItem("calendarTaskList")) || [];
 
 function refreshPage(){
     // localStorage.removeItem("calendarTasks"); // for testing purposes, when I need to start over...
